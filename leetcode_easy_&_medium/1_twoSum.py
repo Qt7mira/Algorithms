@@ -14,3 +14,7 @@ class Solution:
             else:
                 nums_dic[value] = index
         return "no matched nums"
+
+
+sol = Solution()
+print(sol.twoSum([3, 2, 4], 6))
