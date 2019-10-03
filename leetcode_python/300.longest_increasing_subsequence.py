@@ -40,6 +40,7 @@ class Solution:
         # 是O(n2)
 
         # 如果想O(nlogn)的话，应该是对dp进行二分查找
+        # dp[i]代表长度为i+1的上升子序列的最小可能取值
 
         if nums is None or len(nums) == 0:
             return 0
