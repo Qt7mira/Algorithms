@@ -58,4 +58,5 @@ class Solution:
         for i in range(3, n + 1):
             dp[i] = dp.get(i - 1, 0) + dp.get(i - 2, 0)
 
-        return dp[n]
+        # 预防n=0的case，虽然在testcase中没有lol
+        return dp.get(n, 0)
