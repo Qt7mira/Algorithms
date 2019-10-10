@@ -38,3 +38,12 @@ if __name__ == '__main__':
     head = generate_linked_list(head_data)
     show_linked_list_result(head)
 
+    # 用于生成链表的test case
+    # from leetcode_python.pad import generate_linked_list
+    # from leetcode_python.pad import show_linked_list_result
+    #
+    # head = generate_linked_list([])
+    # sol = Solution()
+    # res = sol.func()
+    # show_linked_list_result(res)
+
