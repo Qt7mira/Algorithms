@@ -1,5 +1,5 @@
 #
-# @lc app=leetcode.cn id=114 lang=python3
+# @lc app=leetcode.cn id=141 lang=python3
 #
 # [141] 分隔链表
 #
@@ -58,3 +58,5 @@ class Solution:
             if fast == slow:
                 return True
         return False
+
+
