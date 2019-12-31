@@ -35,37 +35,37 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
-        # 利用二分法，还设置了提前终止的条件
-        # 但提交之后，发现还是相对比较慢……回头再想想
+        # 新方法，用两次2分，分别找左右
+        # 细节是魔鬼 T.T
+
+        def find_l(nums, low, high):
+            # 注意循环退出条件：带等号
+            while low <= high:
+                mid = low + ((high - low) >> 1)
+                # 注意指针移动时，带 +1/-1，=mid可能会导致原地不动
+                if nums[mid] >= target:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+
+            return low
+
+        def find_r(nums, low, high):
+            while low <= high:
+                mid = low + ((high - low) >> 1)
+                if nums[mid] <= target:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+            return high
+
         length = len(nums)
+        start = find_l(nums, 0, length - 1)
 
-        if length == 0:
+        # nums 为空 或者 没有target
+        if start == len(nums) or nums[start] != target:
             return [-1, -1]
-        if length == 1:
-            return [0, 0] if nums[0] == target else [-1, -1]
 
-        l, r = 0, length - 1
-        start, end = -1, -1
-
-        while l <= r:
-
-            print("l", l, nums[l], "r", r, nums[r])
-
-            if nums[l] == target and start == -1:
-                start = l
-            if nums[r] == target and end == -1:
-                end = r
-            if end != -1 and start != -1:
-                break
-
-            mid = (l + r + 1) // 2
-            if nums[mid] <= target:
-                l += 1
-            else:
-                r -= 1
-
-            print(l, r, start, end)
-
-        return [start, end]
+        return [start, find_r(nums, 0, length - 1)]
 # @lc code=end
 
