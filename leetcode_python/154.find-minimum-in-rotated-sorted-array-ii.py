@@ -56,6 +56,11 @@ class Solution:
                 high = mid
             # [1, 0, 1, 1, 1] 在 low = 0, high = 4, mid = 2 时，无法判断 mid 在哪个排序区间中。
             else:
+                # 预防[1, 1, 3, 1]的case
+                # lc能够ac只是因为此时的high与最后的low的值相同
+                # 但返回low的并不是旋转点
+                if nums[high - 1] > nums[high]:
+                    return nums[high]
                 high -= 1
 
         return nums[low]
