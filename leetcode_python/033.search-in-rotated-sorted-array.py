@@ -41,34 +41,31 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
 
         # 先找到旋转节点，然后就是简单的有序数据找数了
+        def find_rotated(low, high):
 
-        def find_rotated_index(l, r):
-            rotated_index = 0
+            while low < high:
 
-            # 不加等号是因为想要后面的那个元素的index
-            while l < r:
+                mid = low + ((high - low) >> 1)
 
-                # +1 是因为想要后面的那个元素的index
-                rotated_index = (l + r + 1) // 2
-                if nums[rotated_index] > nums[l]:
-                    l += 1
+                if nums[mid] > nums[high]:
+                    low = mid + 1
                 else:
-                    r -= 1
+                    high = mid
 
-            return rotated_index
+            return low
 
-        def search_result(l, r):
+        def find_target(low, high):
 
-            while l <= r:
+            while low <= high:
 
-                mid = (l + r) // 2
+                mid = low + ((high - low) >> 1)
                 if nums[mid] == target:
                     return mid
 
-                if target > nums[l]:
-                    l += 1
+                if nums[mid] < target:
+                    low = mid + 1
                 else:
-                    r -= 1
+                    high = mid - 1
 
             return -1
 
@@ -78,16 +75,13 @@ class Solution:
         if length == 1:
             return 0 if nums[0] == target else -1
 
-        l = 0
-        r = length - 1
+        rotated_index = find_rotated(0, length - 1)
+        print("rotated_index", rotated_index)
 
-        ind = find_rotated_index(l, r)
-        print("id", ind)
-
-        if nums[ind] <= target <= nums[r]:
-            return search_result(ind, r)
-        elif nums[l] <= target <= nums[ind - 1]:
-            return search_result(l, ind - 1)
+        if nums[rotated_index] <= target <= nums[-1]:
+            return find_target(rotated_index, length - 1)
+        elif nums[0] <= target <= nums[rotated_index - 1]:
+            return find_target(0, rotated_index - 1)
         else:
             return -1
 
