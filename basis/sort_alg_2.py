@@ -79,15 +79,16 @@ def quick_sort(array, l, r):
         """
 
         pivot = array[r]
-        i = l - 1
+        i = l
 
         for j in range(l, r):
             if array[j] <= pivot:
-                i += 1
-                array[i], array[j] = array[j], array[i]
 
-        array[i + 1], array[r] = array[r], array[i + 1]
-        return i + 1
+                array[i], array[j] = array[j], array[i]
+                i += 1
+
+        array[i], array[r] = array[r], array[i]
+        return i
 
     if l < r:
         pivot = partition(array, l, r)
