@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Authors: panqiutong
+Authors: qt7mira
 Date:    2020/1/19
 排序算法2
 归并 & 快排

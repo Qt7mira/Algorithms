@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Authors: panqiutong
+Authors: qt7mira
 Date:    2019/12/18
 排序算法1
 冒泡，插入，选择
