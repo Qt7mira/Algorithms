@@ -1,3 +1,17 @@
+# -*- coding: utf-8 -*-
+################################################################################
+#
+# Copyright (c) 2020
+#
+################################################################################
+"""
+Authors: Qt7mira
+Date:    2020/10/20
+
+链表调试工具类
+"""
+
+
 class ListNode:
     """
     ListNode
@@ -37,13 +51,3 @@ if __name__ == '__main__':
     head_data = [1, 2, 3, 4, 5]
     head = generate_linked_list(head_data)
     show_linked_list_result(head)
-
-    # 用于生成链表的test case
-    # from leetcode_python.pad import generate_linked_list
-    # from leetcode_python.pad import show_linked_list_result
-    #
-    # head = generate_linked_list([])
-    # sol = Solution()
-    # res = sol.func()
-    # show_linked_list_result(res)
-

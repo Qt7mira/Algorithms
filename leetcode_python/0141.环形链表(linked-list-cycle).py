@@ -1,7 +1,7 @@
 #
 # @lc app=leetcode.cn id=141 lang=python3
 #
-# [141] 分隔链表
+# [141] 环形链表
 #
 # https://leetcode-cn.com/problems/linked-list-cycle/description/
 #
